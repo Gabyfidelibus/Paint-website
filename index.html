@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Paint 2</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1870515fb5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="panel" ondragstart="return false;" ondrop="return false;">
+        <div class="edit-section">
+            <div class="undo-redo">
+                <button id="undo" class="unavailable" title="undo"><i class="fa-solid fa-circle-chevron-left fa-1x"></i></button>
+                <button id="redo" class="unavailable" title="redo"><i class="fa-solid fa-circle-chevron-right fa-1x"></i></button>
+            </div>
+            <div class="size">
+                <p onselectstart = 'return false'>Size</p>
+                <input type="range" id="range" step="2" min="2" max="100" value="20" oninput="rangenumber.value=value"/>
+                <input type="number" id="rangenumber" step="2" min="2" max="98" value="20" oninput="range.value=value"/>
+            </div>
+            <div class="color">
+                <p onselectstart = 'return false'>Color</p>
+                <input id="color1" type="color" value="#C23CDD" title="color 1">
+                <input id="color2" type="color" value="#ffffff" title="color 2">
+            </div>
+            <div class="draw-mode">
+                <button id="brush" class="enabled" title="brush"><i class="fa-solid fa-paintbrush fa-1x"></i></button>
+                <button id="rectangle" class="disabled" title="rectangle"><i class="fa-regular fa-square-full fa-1x"></i></button>
+                <button id="ellipse" class="disabled" title="ellipse"><i class="fa-regular fa-circle fa-1x"></i></button>
+                <button id="line" class="disabled" title="line"><i class="fa-solid fa-slash fa-1x"></i></button>
+                <button id="eraser" class="disabled" title="eraser"><i class="fa-solid fa-eraser fa-1x"></i></button>
+                
+            </div>
+        </div>
+        <div class="file-section">
+            <button id="download" title="download"><i class="fa-solid fa-download fa-1x"></i></button>
+            <div class="input-file">
+                <input type="file" id="file"/>
+                <label for="file" class="input-file-btn" title="import"><i class="fa-solid fa-file-import fa-1x"></i></label>
+            </div>
+        </div>
+    </header>
+    <div class="container" ondragstart="return false;" ondrop="return false;" onselectstart = 'return false'>
+        <right id="e-resize" class="resize"></right>
+        <bot id="s-resize" class="resize"></bot>
+        <bot-right id="se-resize" class="resize"></bot-right>
+        <div id="center" class="hidden"></div>
+        <canvas id="canvas" width="720px" height="480px"></canvas>
+        <svg id="svg-overlay" class="visible" width="720px" height="480px"></svg>
+    </div>
+    <footer class="footer" ondragstart="return false;" ondrop="return false;" onselectstart = 'return false'>
+        <table class="table-info">
+            <tr>
+                <td class="info-description">mouse position</td>
+                <td id="mouse-position"></td>
+                <td class="info-description">figure position</td>
+                <td id="selection-position"></td>
+                <td class="info-description">figure size</td>
+                <td id="selection-size"></td>
+                <td class="info-description">sheet size</td>
+                <td id="canvas-size">720 x 480 px</td>
+            </tr>
+        </table>
+    </footer>
+    <script data-main="js/main.js" src="js/lib/require.js"></script>
+</body>
+</html>
